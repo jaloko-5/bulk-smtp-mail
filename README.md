@@ -124,4 +124,15 @@ If you find a bug or want to enhance these scripts, feel free to open an issue o
 
 ## License
 
-This repository does not specify a license and is provided "as is". If you intend to reuse the code in your own projects, please credit the author appropriately or choose a suitable license.
+Th
+
+rep
+
+ository does not specify a license and is provided "as is". If you intend to reuse the code in your own projects, please credit the author appropriately or choose a suitable license
+
+## Support
+
+
+
+
+Support me on Ko-fi: [https://ko-fi.com/jaloko5](https://ko-fi.com/jaloko5)
