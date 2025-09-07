@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title }}</title>
+    <style>
+        body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial; margin: 24px; color: #111; }
+        h1 { margin-bottom: 8px; }
+        .grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+        .card { border: 1px solid #e5e7eb; border-radius: 8px; padding: 12px; background: #fff; }
+        .muted { color: #6b7280; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { text-align: left; padding: 8px; border-bottom: 1px solid #eee; }
+        .kpi { font-weight: 700; font-size: 22px; }
+        .pill { padding: 2px 8px; border-radius: 16px; background: #eef2ff; color: #3730a3; font-size: 12px; }
+    </style>
+    <meta http-equiv="refresh" content="10">
+    </head>
+<body>
+    <h1>{{ title }}</h1>
+    <p class="muted">Auto-refreshing every 10s. Background scheduler simulates warm-up, personalization, and engagement.</p>
+
+    <div class="grid" style="margin:16px 0;">
+        <div class="card">
+            <div class="muted">Recipients</div>
+            <div class="kpi">{{ recipients_count }}</div>
+        </div>
+        <div class="card">
+            <div class="muted">Sends</div>
+            <div class="kpi">{{ sends }}</div>
+        </div>
+        <div class="card">
+            <div class="muted">Opens</div>
+            <div class="kpi">{{ opens }}</div>
+        </div>
+        <div class="card">
+            <div class="muted">Replies</div>
+            <div class="kpi">{{ replies }}</div>
+        </div>
+    </div>
+
+    <div class="grid" style="margin:16px 0;">
+        <div class="card">
+            <div class="muted">Bounces</div>
+            <div class="kpi">{{ bounces }}</div>
+        </div>
+        <div class="card">
+            <div class="muted">Unsubscribes</div>
+            <div class="kpi">{{ unsubs }}</div>
+        </div>
+        <div class="card">
+            <div class="muted">Success %</div>
+            <div class="kpi">{% if success_pct is not none %}{{ success_pct }}%{% else %}<span class="pill">Collecting</span>{% endif %}</div>
+        </div>
+        <div class="card">
+            <div class="muted">Senders</div>
+            <div class="kpi">{{ senders | length }}</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>Campaigns</h3>
+        <table>
+            <thead><tr><th>Name</th><th>Active</th><th>Subject</th></tr></thead>
+            <tbody>
+                {% for c in campaigns %}
+                <tr>
+                    <td>{{ c.name }}</td>
+                    <td>{{ 'Yes' if c.active else 'No' }}</td>
+                    <td class="muted">{{ c.subject_template }}</td>
+                </tr>
+                {% else %}
+                <tr><td colspan="3" class="muted">No campaigns</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <p class="muted" style="margin-top:24px;">This simulator includes warm-up caps, spam analysis, AI-like personalization, compliance footer, and engagement tracking.</p>
+</body>
+</html>
